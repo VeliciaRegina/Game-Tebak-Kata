@@ -1,0 +1,415 @@
+#                                   HEWAN
+Albatros
+Aligator
+Alpaka
+Anakonda
+Angsa
+Anjing
+Anjing Laut
+Antelop
+Arwana
+Ayam
+Ayam Kalkun
+Ayam Kate
+Ayam Mutiara
+Axolotl
+Babi
+Babi Hutan
+Babun
+Badak
+Bajing
+Bandeng
+Bangau
+Banteng
+Barakuda
+Bawal
+Bebek
+Bekantan
+Bekicot
+Belalang
+Belangkas
+Belatung
+Belibis
+Belut
+Beo
+Berang-berang
+Beruang
+Beruk
+Betik
+Biawak
+Bintang Laut
+Binturong
+Bison
+Buaya
+Bulu Babi
+Bulus
+Bunglon
+Burung Hantu
+Burung Unta
+Cacing
+Cakalang
+Camar
+Capung
+Celeng
+Cendrawasih
+Cheetah
+Cicak
+Cumi-cumi
+Cupang
+Dara
+Domba
+Dugong
+Elang
+Emu
+Enggang
+Flamingo
+Gabus
+Gagak
+Gajah
+Garangan
+Gelatik
+Gorila
+Guanako
+Guppy
+Gurame
+Gurita
+Hamster
+Harimau
+Hiena
+Hiu
+Iguana
+Kacer
+Kadal
+Kakap
+Kakatua
+Kaki Seribu
+Kalkun
+Kalong
+Kalajengking
+Kambing
+Kampret
+Kancil
+Kangguru
+Kasuari
+Katak
+Kecoa
+Kelelawar
+Kelinci
+Keong
+Kepiting
+Kepodang
+Kera
+Kerang
+Kerapu
+Kerbau
+Kijang
+Kijing
+Kiwi
+Koala
+Kobra
+Kodok
+Koi
+Koki
+Kolibri
+Komodo
+Krabuku
+Kucing
+Kuda
+Kuda Laut
+Kuda Nil
+Kukang
+Kumbang
+Kupu-kupu
+Kura-kura
+Kuskus
+Kutu
+Laba-laba
+Lalat
+Lama
+Landak
+Lebah
+Lele
+Lemur
+Lintah
+Lipan
+Lobster
+Louhan
+Lumba-lumba
+Luwak
+Macan
+Macan Kumbang
+Macan Tutul
+Makaka
+Marlin
+Marmut
+Merak
+Merpati
+Monyet
+Mujair
+Murai
+Musang
+Ngengat
+Nila
+Nyamuk
+Orangutan
+Pacet
+Panda
+Pari
+Parkit
+Patin
+Paus
+Paus Pembunuh
+Pelatuk
+Pelikan
+Penguin
+Penyu
+Perkutut
+Piranha
+Piton
+Puma
+Puyuh
+Rajawali
+Rajungan
+Rayap
+Remis
+Rubah
+Rusa
+Salamander
+Salmon
+Sanca
+Sapi
+Sapu-sapu
+Sarden
+Semut
+Sepat
+Serigala
+Sidat
+Simpanse
+Singa
+Singa Laut
+Siput
+Sotong
+Tarantula
+Tarsius
+Tawon
+Tekukur
+Tenggiri
+Teri
+Teripang
+Tikus
+Tiram
+Tokek
+Tongkol
+Toucan
+Trenggiling
+Tumbila
+Tuna
+Tupai
+Ubur-ubur
+Udang
+Ular
+Ulat
+Undur-undur
+Unta
+Walet
+Wader
+Walrus
+Wombat
+Yak
+Zebra
+
+#                                  NEGARA
+Afganistan
+Afrika Selatan
+Albania
+Aljazair
+Amerika Serikat
+Andorra
+Angola
+Antigua dan Barbuda
+Arab Saudi
+Argentina
+Armenia
+Australia
+Austria
+Azerbaijan
+Bahama
+Bahrain
+Bangladesh
+Barbados
+Belanda
+Belarus
+Belgia
+Belize
+Benin
+Bhutan
+Bolivia
+Bosnia dan Herzegovina
+Botswana
+Brasil
+Britania Raya
+Brunei Darussalam
+Bulgaria
+Burkina Faso
+Burundi
+Ceko
+Chad
+Cile
+Denmark
+Djibouti
+Dominika
+Ekuador
+El Salvador
+Eritrea
+Estonia
+Eswatini
+Etiopia
+Fiji
+Filipina
+Finlandia
+Gabon
+Gambia
+Georgia
+Ghana
+Grenada
+Guatemala
+Guinea
+Guinea Khatulistiwa
+Guinea-Bissau
+Guyana
+Haiti
+Honduras
+Hungaria
+India
+Indonesia
+Irak
+Iran
+Irlandia
+Islandia
+Israel
+Italia
+Jamaika
+Jepang
+Jerman
+Kamboja
+Kamerun
+Kanada
+Kazakhstan
+Kenya
+Kepulauan Marshall
+Kepulauan Solomon
+Kirgizstan
+Kiribati
+Kolombia
+Komoro
+Kongo
+Korea Selatan
+Korea Utara
+Kosta Rika
+Kroasia
+Kuba
+Kuwait
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lituania
+Luksemburg
+Madagaskar
+Makedonia Utara
+Maladewa
+Malawi
+Malaysia
+Mali
+Malta
+Maroko
+Mauritania
+Mauritius
+Meksiko
+Mesir
+Mikronesia
+Moldova
+Monako
+Mongolia
+Montenegro
+Mozambik
+Myanmar
+Namibia
+Nauru
+Nepal
+Niger
+Nigeria
+Nikaragua
+Norwegia
+Oman
+Pakistan
+Palau
+Panama
+Pantai Gading
+Papua Nugini
+Paraguay
+Prancis
+Peru
+Polandia
+Portugal
+Qatar
+Republik Afrika Tengah
+Republik Demokratik Kongo
+Republik Dominika
+Rumania
+Rusia
+Rwanda
+Saint Kitts dan Nevis
+Saint Lucia
+Saint Vincent dan Grenadine
+Samoa
+San Marino
+Sao Tome dan Principe
+Selandia Baru
+Senegal
+Serbia
+Seychelles
+Sierra Leone
+Singapura
+Siprus
+Slovenia
+Slowakia
+Somalia
+Spanyol
+Sri Lanka
+Sudan
+Sudan Selatan
+Suriah
+Suriname
+Swedia
+Swiss
+Tajikistan
+Tanjung Verde
+Tanzania
+Thailand
+Timor Leste
+Tiongkok
+Togo
+Tonga
+Trinidad dan Tobago
+Tunisia
+Turki
+Turkmenistan
+Tuvalu
+Uganda
+Ukraina
+Uni Emirat Arab
+Uruguay
+Uzbekistan
+Vanuatu
+Vatikan
+Venezuela
+Vietnam
+Yaman
+Yordania
+Yunani
+Zambia
+Zimbabwe
