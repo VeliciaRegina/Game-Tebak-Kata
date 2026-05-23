@@ -42,8 +42,6 @@ def binary_search(arr, target):
          right = mid - 1
    return -1
 
-def recursive():
-   pass
 
 angka = [-2, 1, -5.5, 10, 45, 17, 0]
 print(merge_sort(angka))

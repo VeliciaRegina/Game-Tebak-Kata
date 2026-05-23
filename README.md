@@ -1,5 +1,5 @@
 Game bernama "Tebak Kata Berantai"
-game sederhana di mana pemain harus menyambung kata (misal: BUKU -> ULAR -> RUSA).
+game sederhana di mana pemain harus menyambung kata (misal: ULAR -> RUSA -> AYAM).
 
 Konsep game:
 -multiplayer 2 pemain
@@ -8,7 +8,7 @@ Konsep game:
 -ada skor
 -ada hint (setiap pakai hint skor berkurang)
 -ada undo
--ada nyawa (5 nyawa)
+-ada nyawa (3 nyawa)
 
 Algoritma game:
 

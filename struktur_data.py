@@ -1,8 +1,7 @@
 from algoritma import merge_sort
 
 class Stack:
-   '''Digunakan untuk membatalkan kata terakhir yang diinput (undo)
-'''
+   '''Digunakan untuk membatalkan kata terakhir yang diinput (undo)'''
    def __init__(self):
       self.stack = [] #Menginisialisasi list bernama stack
 
@@ -36,7 +35,7 @@ class Stack:
 
 
 #----------------------------------------------------------------
-class Queque:
+class Queue:
    '''Digunakan untuk antrean pemain di ruang tunggu sebelum mulai
 '''
    def __init__(self):
