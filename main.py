@@ -1,5 +1,5 @@
-from models import Player, GameSession
-from struktur_data import Queue
+'''from models import Player, GameSession
+from struktur_data.queue import Queue
 
 def main_menu():
    print('==============================')
@@ -9,6 +9,11 @@ def main_menu():
    print('2. Leaderboard')
    print('3. Bantuan')
    print('4. Keluar')
+   print('------------------------------')
+   menu = int(input('Pilih menu: '))
+
+   if menu == 1:
+      pass
 
    # Membuat class Player
    nama1 = input('Masukkan nama player 1: ')
@@ -25,4 +30,4 @@ def main_menu():
    sesi.start_game()
 
    while sesi.game_running:
-      pass
+      pass'''

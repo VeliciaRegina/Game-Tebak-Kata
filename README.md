@@ -14,16 +14,15 @@ Algoritma game:
 
 1. Main Menu
 2. Input Player
-3. Queue Lobby
-4. Pilih Tema
-5. Generate Kata Awal
-6. Gameplay
+3. Pilih Tema
+4. Generate Kata Awal
+5. Gameplay
    Validasi Kata:
    Benar -> lanjut
    Salah -> kurangi nyawa
    Simpan ke Linked List
    Update Stack
    Ganti Giliran
-7. Game Over
-8. Sorting Leaderboard
-9. Save File
+6. Game Over
+7. Sorting Leaderboard
+8. Save File
