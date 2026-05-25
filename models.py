@@ -51,12 +51,45 @@ class GameSession:
       self.word_path = DoubleLinkedList() #Menyimpan perjalanan kata
       self.player_turn = CircularLinkedList() #Mengatur giliran pemain
 
+   def show_lobby(self):
+      print()
+      print('=' *35)
+      print("      PEMAIN MASUK LOBBY")
+      print('=' *35)
+
+      print("+------------------------+")
+      print("|  Posisi |  Nama Pemain |")
+      print("+------------------------+")
+
+      nomor = 1
+      current = self.player_turn.head
+
+      if current is not None:
+
+         while True:
+            player = current.data
+            print("|   ", nomor, "   |", player.name, " " * 10, "|")
+
+            nomor += 1
+            current = current.next
+
+            if current == self.player_turn.head:
+               break
+
+      print("+------------------------+\n")
+
    def setup_player(self):
       '''Menyiapkan data pemain'''
+      print('=' *35)
+      print("              INPUT PEMAIN")
+      print('=' *35)
+
       for i in range(2):
          name = input(f'Masukkan nama player {i+1}: ')
          player = Player(name) #Memanggil class Player
          self.player_turn.append(player)
+
+      self.show_lobby()
    
    def choose_theme(self):
       '''Player memilih tema permainan'''
@@ -239,7 +272,11 @@ class GameSession:
 
    def start_game(self):
       '''Memulai permainan'''
-      print('======= GAME DIMULAI! =======')
+      print('======= GAME DIMULAI! =======\n')
+
+      # Pindahkan setup player ke sini
+      self.setup_player()
+
       tema = self.choose_theme() #Memilih tema permainan
       self.load_words(tema) #Memuat data ke database
       self.setup_game() #Meyiapkan kata pertama secara acak
@@ -247,6 +284,7 @@ class GameSession:
 
       while self.game_status == True:
          self.next_turn()
+
       self.end_game()
 
 

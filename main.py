@@ -1,5 +1,4 @@
-from models import Player, GameSession
-from struktur_data.queue import Queue
+from models import GameSession
 
 
 # Tampilan awal/judul game
@@ -31,61 +30,7 @@ def peraturan():
 def mulai_game():
    """Memulai permainan"""
 
-   print('=' *35)
-   print("              INPUT PEMAIN")
-   print('=' *35)
-
-   # input nama pemain
-   nama1 = input("Nama Player 1 : ")
-   nama2 = input("Nama Player 2 : ")
-
-   # membuat object pemain
-   player1 = Player(nama1)
-   player2 = Player(nama2)
-
-   # queue sebagai lobby/ruang tunggu pemain
-   lobby = Queue()
-
-   # Memasukkan pemain ke queue
-   lobby.enqueue(player1)
-   lobby.enqueue(player2)
-
-   print()
-   print('=' *35)
-   print("      PEMAIN MASUK LOBBY")
-   print('=' *35)
-
-   print("+------------------------+")
-   print("|  Posisi |  Nama Pemain |")
-   print("+------------------------+")
-
-   nomor = 1
-
-   # Menampilkan antrean pemain
-   while not lobby.is_empty():
-
-      # Mengambil pemain dari antrian
-      pemain = lobby.dequeue()
-
-      print(
-         "|   ",
-         nomor,
-         "   |",
-         pemain.name,
-         " " * 10,
-         "|"
-      )
-
-      nomor += 1
-
-   print("+------------------------+\n")
-
-   # Membuat sesi permainan
    sesi = GameSession()
-
-   # Menambahkan pemain ke sistem giliran
-   sesi.player_turn.append(player1)
-   sesi.player_turn.append(player2)
 
    # mulai game
    sesi.start_game()
