@@ -79,9 +79,25 @@ class GameSession:
             print('Opsi tidak valid.')
    
    def load_words(self, filename):
-      '''Menambahkan kata-kata ke struktur data'''
+      '''Menghapus kata duplikat dengan set manual'''
       words = read_words_from_file(filename)
-      for x in words:
+
+      unique_words = []
+
+      # manual check duplikat
+      for word in words:
+         found = False
+
+         for u in unique_words:
+            if u == word:
+               found = True
+               break
+
+         if not found:
+            unique_words.append(word)
+
+      # Masukkan ke struktur data
+      for x in unique_words:
          self.word_tree.insert(x) #Tree
          self.word_database.insert(x, True) #Hash table database
          self.word_graph.add_vertex(x) #Menambah node/kata ke graph
