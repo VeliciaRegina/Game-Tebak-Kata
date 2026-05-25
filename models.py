@@ -1,8 +1,7 @@
 import random #JANGAN LUPAAAAA
 from struktur_data.tree import WordTree
 from struktur_data.hash_table import HashTable
-from struktur_data.graph import Graph
-from struktur_data.stack import Stack
+from struktur_data.graph import Graph 
 from struktur_data.queue import Queue
 from struktur_data.single_linked_list import SingleLinkedList
 from struktur_data.double_linked_list import DoubleLinkedList
@@ -38,13 +37,14 @@ class GameSession:
    def __init__(self):
       self.current_word = None
       self.game_status = True
+
       #Struktur Data
       self.word_tree = WordTree() #Pencarian dan kategori kata
       self.word_graph = Graph() #Hubungan antar kata
       self.word_database = HashTable() #Menyimpan semua kata
       self.used_word = HashTable() #Menyimpan kata yang sudah dipakai
       
-      self.word_history = Stack() #Meyimpan riwayat urutan kata
+      
       self.hint_queue = Queue() #Menyimpan antrian petunjuk
       
       self.score_history = SingleLinkedList() #Menyimpan score permainan
@@ -101,9 +101,6 @@ class GameSession:
       #Tandai kata sudah dipakai
       self.used_word.insert(self.current_word, True)
 
-      #Simpan ke history
-      self.word_history.push(self.used_word)
-
       #Simpan perjalanan kata
       self.word_path.append(self.current_word)
 
@@ -112,8 +109,9 @@ class GameSession:
       self.hint_queue.enqueue(hint)
 
    def next_turn(self):
+      '''Menjalankan turn permainan (user input kata)'''
       current_player = self.player_turn.get_current()
-      print(f'\nGiliran: {current_player.name} ({current_player.lives} nyawa)')
+      print(f'\nGiliran: {current_player.name} ({current_player.lives} nyawa)  |  Skor: {current_player.score}')
       print(f'Kata sekarang: {self.current_word}')
 
       # Mengecek apakah pemain masih hidup
@@ -127,9 +125,9 @@ class GameSession:
          hints = generate_hint(self.current_word, self.word_graph)
          print(f'\nHint: ')
          if hints:
+            current_player.score -= 5
             for word in hints:
                print('-', word)
-               current_player.score -= 5
          else: print ('Tidak ada petunjuk yang tersedia!')
       
       print('-' *35)
@@ -143,7 +141,7 @@ class GameSession:
          self.update_score(current_player, 10)
       
       # Jika kata sudah dipakai
-      elif valid == 'used':
+      elif valid == 'Used':
          print('kata sudah dipakai')
          current_player.reduce_live()
       
@@ -158,6 +156,7 @@ class GameSession:
          print(f'{current_player.name} kehabisan nyawa')
          self.game_status = False
          return
+
       self.player_turn.next_turn()
 
    def validate_answer(self, answer):
@@ -192,9 +191,6 @@ class GameSession:
       # simpan ke used word
       self.used_word.insert(new_word, True)
 
-      # push ke stack history
-      self.word_history.push(new_word)
-
       # simpan perjalanan
       self.word_path.append(new_word)
 
@@ -205,6 +201,26 @@ class GameSession:
    def end_game(self):
       print('\n======== GAME SELESAI ========')
 
+      # Tampilkan score
+      current = self.player_turn.head
+      player = current.data
+
+      while True:
+         # Ambil data dari player aktif saat ini
+         player = current.data
+         print(f'{player.name} : {player.score}')
+
+         # Geser ke node berikutnya
+         current = current.next
+
+         if current == self.player_turn.head: #Mencegah endless loop
+            break
+
+      # Perjalanan kata
+      print('\nPerjalanan kata:')
+      self.word_path.display_forward()
+      self.game_status = False
+
    def start_game(self):
       '''Memulai permainan'''
       print('======= GAME DIMULAI! =======')
@@ -212,6 +228,19 @@ class GameSession:
       self.load_words(tema) #Memuat data ke database
       self.setup_game() #Meyiapkan kata pertama secara acak
 
+
       while self.game_status == True:
          self.next_turn()
       self.end_game()
+
+
+   def display_dictionary(self):
+         '''Menampilkan seluruh kosakata yang dikelompokkan berdasarkan huruf abjad'''
+         print('\n=====================================')
+         print('       DICTIONARY GAME (A-Z)')
+         print('=====================================')
+
+         # Menggunakan fungsi display() dari WordTree
+         self.word_tree.display()
+         print('=====================================')
+

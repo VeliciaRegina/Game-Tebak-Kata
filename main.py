@@ -1,6 +1,7 @@
 from models import Player, GameSession
 from struktur_data.queue import Queue
 
+
 # Tampilan awal/judul game
 print('='*45)
 print("         GAME TEBAK KATA BERANTAI")
