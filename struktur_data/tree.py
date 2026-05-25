@@ -1,3 +1,5 @@
+from algoritma import merge_sort
+
 class TreeNode:
    def __init__(self, letter =''):
       self.letter = letter
@@ -31,10 +33,12 @@ class WordTree:
    
    def display(self):
       '''Menampilkan isi tree'''
+      sorted_letter = merge_sort(list(self.root.children.keys()))
+
       print('\n===== ISI TREE =====')
-      for letter in (self.root.children):
-         node = self.root.children[letter].words
-         print(f'{letter} -> {node}')
+      for letter in sorted_letter:
+         words_list = self.root.children[letter].words
+         print(f'[{letter}] : ', ', '.join(words_list))
 
 #tree = WordTree()
 #tree.insert("ULAR")
@@ -42,10 +46,10 @@ class WordTree:
 #tree.insert("UNTA")
 #tree.insert("HARIMAU")
 #tree.insert("HIU")
+#tree.insert('Ayam')
 #tree.display()
 #h = tree.get_words_by_letter('h')
 #print(f'H: {h}')
-
 #word_tree = WordTree()
 #for words in animal_words:
 #   word_tree.insert(words)

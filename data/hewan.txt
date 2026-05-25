@@ -141,6 +141,7 @@ Hiu putih
 Hudhud
 Humat
 Hummingbird
+Ikan
 Ibi
 Ibis
 Iguana
@@ -572,7 +573,6 @@ Yorkshire
 Yu
 Yu kemejan
 Zebra
-Zebra cross
 Zebu
 Zonkey
 Zorilla
