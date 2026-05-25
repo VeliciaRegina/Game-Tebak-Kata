@@ -3,7 +3,7 @@ game sederhana di mana pemain harus menyambung kata (misal: ULAR -> RUSA -> AYAM
 
 Konsep game:
 -multiplayer 2 pemain
--tema kata hewan / negara / buah
+-tema kata hewan/negara/buah
 -pemain harus menyambung huruf akhir
 -ada skor
 -ada hint (setiap pakai hint skor berkurang)
