@@ -7,6 +7,7 @@ from struktur_data.single_linked_list import SingleLinkedList
 from struktur_data.double_linked_list import DoubleLinkedList
 from struktur_data.circular_linked_list import CircularLinkedList
 from game_logic import read_words_from_file, build_graph, generate_hint
+from leaderboard import Leaderboard
 
 
 class Player:
@@ -50,11 +51,15 @@ class GameSession:
       self.score_history = SingleLinkedList() #Menyimpan score permainan
       self.word_path = DoubleLinkedList() #Menyimpan perjalanan kata
       self.player_turn = CircularLinkedList() #Mengatur giliran pemain
+      
+      # Leaderboard
+      self.leaderboard = Leaderboard()
+      self.current_theme = ""
 
    def show_lobby(self):
       print()
       print('=' *35)
-      print("      PEMAIN MASUK LOBBY")
+      print("         PEMAIN MASUK LOBBY")
       print('=' *35)
 
       print("+------------------------+")
@@ -68,7 +73,7 @@ class GameSession:
 
          while True:
             player = current.data
-            print("|   ", nomor, "   |", player.name, " " * 10, "|")
+            print(f"| {nomor:^7} | {player.name:<13}|")
 
             nomor += 1
             current = current.next
@@ -81,7 +86,7 @@ class GameSession:
    def setup_player(self):
       '''Menyiapkan data pemain'''
       print('=' *35)
-      print("              INPUT PEMAIN")
+      print("         INPUT PEMAIN")
       print('=' *35)
 
       for i in range(2):
@@ -94,13 +99,13 @@ class GameSession:
    def choose_theme(self):
       '''Player memilih tema permainan'''
 
-      print('\n=========================')
-      print('        PILIH TEMA')
-      print('=========================')
-      print('1. Hewan')
-      print('2. Negara')
-      print('3. Buah')
-      print('-------------------------')
+      print('\n+========================+')
+      print('|        PILIH TEMA      |')
+      print('+========================+')
+      print('| 1. Hewan               |')
+      print('| 2. Negara              |')
+      print('| 3. Buah                |')
+      print('+========================+')
       while True:
          try:
             tema = int(input('Pilih tema: '))
@@ -259,6 +264,13 @@ class GameSession:
          player = current.data
          print(f'{player.name} : {player.score}')
 
+         # Simpan ke leaderboard
+         self.leaderboard.tambah_skor(
+            player.name,
+            player.score,
+            self.current_theme
+         )
+
          # Geser ke node berikutnya
          current = current.next
 
@@ -278,6 +290,7 @@ class GameSession:
       self.setup_player()
 
       tema = self.choose_theme() #Memilih tema permainan
+      self.current_theme = tema # Simpan tema untul leaderboard
       self.load_words(tema) #Memuat data ke database
       self.setup_game() #Meyiapkan kata pertama secara acak
 
