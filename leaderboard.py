@@ -1,3 +1,5 @@
+from algoritma import merge_sort, binary_search
+
 class Leaderboard:
     def __init__(self, nama_file='leaderboard.txt'):
         self.nama_file = nama_file
@@ -5,7 +7,7 @@ class Leaderboard:
         self._muat_dari_file()
 
     def _muat_dari_file(self):
-        """Baca data dari file jika ada (tanpa os.path)."""
+        """Baca data dari file jika ada"""
         self.data = []
         try:
             with open(self.nama_file, 'r', encoding='utf-8') as f:
@@ -20,14 +22,13 @@ class Leaderboard:
                                 self.data.append([nama, skor, tema])
                             except:
                                 pass
-        except FileNotFoundError:
-            # File belum ada, tidak masalah
+        except FileNotFoundError: # File belum ada
             return
         except:
             print("Tidak dapat membaca file. Data baru akan dibuat.")
 
     def _simpan_ke_file(self):
-        """Simpan data ke file."""
+        """Simpan data ke file"""
         try:
             with open(self.nama_file, 'w', encoding='utf-8') as f:
                 for item in self.data:
@@ -37,43 +38,15 @@ class Leaderboard:
 
     def tambah_skor(self, nama, skor, tema):
         """Menambahkan skor baru."""
-        self.data.append([nama, skor, tema])
+        self.data.append((nama, skor, tema))
         self._simpan_ke_file()
-
-    def _gabung(self, kiri, kanan):
-        """Gabung dua list terurut (descending)."""
-        hasil = []
-        i = j = 0
-        while i < len(kiri) and j < len(kanan):
-            if kiri[i][1] >= kanan[j][1]:
-                hasil.append(kiri[i])
-                i += 1
-            else:
-                hasil.append(kanan[j])
-                j += 1
-        while i < len(kiri):
-            hasil.append(kiri[i])
-            i += 1
-        while j < len(kanan):
-            hasil.append(kanan[j])
-            j += 1
-        return hasil
-
-    def _urutkan(self, arr):
-        """Merge sort descending berdasarkan skor."""
-        if len(arr) <= 1:
-            return arr
-        tengah = len(arr) // 2
-        kiri = self._urutkan(arr[:tengah])
-        kanan = self._urutkan(arr[tengah:])
-        return self._gabung(kiri, kanan)
 
     def tampilkan(self, batas=10):
         """Tampilkan leaderboard ke layar."""
         if not self.data:
             print("\nLeaderboard masih kosong.")
             return
-        terurut = self._urutkan(self.data)
+        terurut = merge_sort(self.data)
         print("\n" + "=" * 40)
         print("        L E A D E R B O A R D")
         print("=" * 40)

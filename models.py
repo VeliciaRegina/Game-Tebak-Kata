@@ -8,6 +8,7 @@ from struktur_data.double_linked_list import DoubleLinkedList
 from struktur_data.circular_linked_list import CircularLinkedList
 from game_logic import read_words_from_file, build_graph, generate_hint
 from leaderboard import Leaderboard
+from algoritma import binary_search, merge_sort
 
 
 class Player:
@@ -38,13 +39,12 @@ class GameSession:
    def __init__(self):
       self.current_word = None
       self.game_status = True
+      self.current_theme = None
 
       #Struktur Data
-      self.word_tree = WordTree() #Pencarian dan kategori kata
       self.word_graph = Graph() #Hubungan antar kata
       self.word_database = HashTable() #Menyimpan semua kata
       self.used_word = HashTable() #Menyimpan kata yang sudah dipakai
-      
       
       self.hint_queue = Queue() #Menyimpan antrian petunjuk
       
@@ -57,6 +57,7 @@ class GameSession:
       self.current_theme = ""
 
    def show_lobby(self):
+      '''Menampilkan pemain dalam lobby'''
       print()
       print('=' *35)
       print("         PEMAIN MASUK LOBBY")
@@ -70,7 +71,6 @@ class GameSession:
       current = self.player_turn.head
 
       if current is not None:
-
          while True:
             player = current.data
             print(f"| {nomor:^7} | {player.name:<13}|")
@@ -117,7 +117,7 @@ class GameSession:
             print('Opsi tidak valid.')
    
    def load_words(self, filename):
-      '''Menghapus kata duplikat dengan set manual'''
+      '''Membaca setiap kata dari file'''
       words = read_words_from_file(filename)
 
       unique_words = []
@@ -136,7 +136,6 @@ class GameSession:
 
       # Masukkan ke struktur data
       for x in unique_words:
-         self.word_tree.insert(x) #Tree
          self.word_database.insert(x, True) #Hash table database
          self.word_graph.add_vertex(x) #Menambah node/kata ke graph
       build_graph(self.word_graph, words) #Menghubungkan edge
@@ -170,7 +169,7 @@ class GameSession:
 
       # Mengecek apakah pemain masih hidup
       if current_player.lives <= 0:
-         print(f'{current_player.name}kehabisan nyawa')
+         print(f'{current_player.name} kehabisan nyawa')
          self.game_status = False
 
       #Tanya apakah player ingin menggunakan hint
@@ -294,20 +293,45 @@ class GameSession:
       self.load_words(tema) #Memuat data ke database
       self.setup_game() #Meyiapkan kata pertama secara acak
 
-
       while self.game_status == True:
          self.next_turn()
 
       self.end_game()
 
+class WordDictionary:
+   '''Digunakan untuk menapilkan dictionary dane mencari kata di main menu (main.py)'''
+   def __init__(self):
+      self.word_tree = WordTree() 
+      self.word_list = []
+      self.load_all_words()
+
+   def load_all_words(self):
+      '''Menghapus kata duplikat dengan set manual'''
+      files = ['hewan.txt', 'negara.txt', 'buah.txt']
+
+      for file in files: #Loop untuk tiga file
+         words = read_words_from_file(file)
+
+         # manual check duplikat
+         for word in words:
+            self.word_tree.insert(word)
+            if word not in self.word_list:
+               self.word_list.append(word)
 
    def display_dictionary(self):
-         '''Menampilkan seluruh kosakata yang dikelompokkan berdasarkan huruf abjad'''
-         print('\n=====================================')
-         print('       DICTIONARY GAME (A-Z)')
-         print('=====================================')
+      '''Menampilkan seluruh kosakata yang dikelompokkan berdasarkan huruf abjad'''
+      print('\n=====================================')
+      print('       DICTIONARY GAME (A-Z)')
+      print('=====================================')
 
-         # Menggunakan fungsi display() dari WordTree
-         self.word_tree.display()
-         print('=====================================')
+      # Menggunakan fungsi display() dari WordTree
+      self.word_tree.display()
 
+   def search_words(self, word):
+      '''Mencari kata dalam dictionary kata'''
+      target = word.upper()
+      urut = merge_sort(self.word_list)
+      hasil = binary_search(urut, target)
+
+      if hasil: return 1
+      else: return 0

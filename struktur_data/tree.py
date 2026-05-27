@@ -35,10 +35,10 @@ class WordTree:
       '''Menampilkan isi tree'''
       sorted_letter = merge_sort(list(self.root.children.keys()))
 
-      print('\n===== ISI TREE =====')
       for letter in sorted_letter:
          words_list = self.root.children[letter].words
          print(f'[{letter}] : ', ', '.join(words_list))
+         print()
 
 #tree = WordTree()
 #tree.insert("ULAR")

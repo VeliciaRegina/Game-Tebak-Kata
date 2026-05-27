@@ -1,9 +1,15 @@
 #BUAT TESTING
 from models import GameSession
 from struktur_data.tree import WordTree
+from utils import clear_screen, tekan_enter
 
-game = GameSession()
-game.start_game()
+print('Tesss')
+tekan_enter()
+print('Tes lagiii')
+
+
+'''game = GameSession()
+game.start_game()'''
 
 #tree = WordTree()
 #tree.insert("ULAR")

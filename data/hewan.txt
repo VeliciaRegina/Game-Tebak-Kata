@@ -332,6 +332,7 @@ Pancing
 Panda
 Panda merah
 Pangolin
+Penguin
 Panter
 Papilio
 Paramecium

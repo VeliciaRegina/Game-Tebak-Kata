@@ -2,13 +2,13 @@ Game bernama "Tebak Kata Berantai"
 game sederhana di mana pemain harus menyambung kata (misal: ULAR -> RUSA -> AYAM).
 
 Konsep game:
--multiplayer 2 pemain
--tema kata hewan/negara/buah
--pemain harus menyambung huruf akhir
--ada skor
--ada hint (setiap pakai hint skor berkurang)
--ada undo
--ada nyawa (3 nyawa)
+
+1. multiplayer 2 pemain
+2. tema kata hewan/negara/buah
+3. pemain harus menyambung huruf akhir
+4. ada skor
+5. ada hint (setiap pakai hint skor berkurang)
+6. ada nyawa (3 nyawa)
 
 Algoritma game:
 
@@ -20,8 +20,7 @@ Algoritma game:
    Validasi Kata:
    Benar -> lanjut
    Salah -> kurangi nyawa
-   Simpan ke Linked List
-   Update Stack
+   Simpan ke Linked List, hash, table
    Ganti Giliran
 6. Game Over
 7. Sorting Leaderboard
