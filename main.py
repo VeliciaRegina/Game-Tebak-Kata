@@ -1,4 +1,5 @@
 from models import GameSession
+from leaderboard import Leaderboard
 
 
 # Tampilan awal/judul game
@@ -61,6 +62,41 @@ def menu_utama():
       # mulai game
       elif pilih == "2":
          mulai_game()
+
+      elif pilih == "3":
+         board = Leaderboard()
+
+         while True:
+            print('+========================+')
+            print('|    MENU LEADERBOARD    |')
+            print('+========================+')
+            print('|1. Lihat Leaderboard    |')
+            print('|2. Hapus Leadervoard    |')
+            print('|3. Kembali              |')
+            print('+========================+')
+
+            opsi = input('Pilih : ')
+
+            # Tampilkan Leaderboard
+            if opsi == "1":
+               board.tampilkan()
+               input('\nTekan ENTER.....')
+
+            # Menghapus Leaderboard
+            elif opsi == "2":
+               konfirmasi = input('Yakin hapus semua data? (Y/N): ').upper()
+
+               if konfirmasi == 'Y':
+                  board.bersihkan()
+
+               input('Tekan ENTER.....')
+
+            # Kembali 
+            elif opsi == "3":
+               break
+
+            else:
+               print('Pilihan tidak valit')
 
       # keluar
       elif pilih == "4":
