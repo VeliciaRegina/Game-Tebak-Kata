@@ -54,7 +54,6 @@ class GameSession:
       
       # Leaderboard
       self.leaderboard = Leaderboard()
-      self.current_theme = ""
 
    def show_lobby(self):
       '''Menampilkan pemain dalam lobby'''
@@ -85,9 +84,7 @@ class GameSession:
 
    def setup_player(self):
       '''Menyiapkan data pemain'''
-      print('=' *35)
-      print("         INPUT PEMAIN")
-      print('=' *35)
+      print("------------INPUT PEMAIN-----------")
 
       for i in range(2):
          name = input(f'Masukkan nama player {i+1}: ')
@@ -158,7 +155,7 @@ class GameSession:
       self.word_path.append(self.current_word)
 
       #Buat hint
-      hint = generate_hint(self.current_word, self.word_graph)
+      hint = generate_hint(self.current_word, self.word_graph, self.used_word)
       self.hint_queue.enqueue(hint)
 
    def next_turn(self):
@@ -175,13 +172,14 @@ class GameSession:
       #Tanya apakah player ingin menggunakan hint
       choice = input('Gunakan hint (score -5)? y/n: ').upper()
       if choice == 'Y':
-         hints = generate_hint(self.current_word, self.word_graph)
-         print(f'\nHint: ')
-         if hints:
-            current_player.score -= 5
-            for word in hints:
-               print('-', word)
-         else: print ('Tidak ada petunjuk yang tersedia!')
+         if not self.hint_queue.is_empty():
+            hints = self.hint_queue.dequeue()
+            print(f'\nHint: ')
+            if hints:
+               current_player.score -= 5
+               for word in hints:
+                  print('-', word)
+            else: print ('Tidak ada petunjuk yang tersedia!')
       
       print('-' *35)
       answer = input('Masukkan kata: ').upper()
@@ -193,10 +191,10 @@ class GameSession:
          self.update_word(answer)
          self.update_score(current_player, 10)
       
-      # Jika kata sudah dipakai
+      # Jika kata sudah dipakai ulangi
       elif valid == 'Used':
          print('kata sudah dipakai')
-         current_player.reduce_live()
+         #current_player.reduce_live()
       
       #jika salah
       else:
@@ -205,7 +203,7 @@ class GameSession:
 
       # Jika nyawa sudah habis
       if current_player.lives <= 0:
-         print('\n===== GAME OVER =====')
+         print('\n============ GAME OVER ============')
          print(f'{current_player.name} kehabisan nyawa')
          self.game_status = False
          return
@@ -248,11 +246,12 @@ class GameSession:
       self.word_path.append(new_word)
 
       # buat hint baru
-      hint = f'Kata berikutnya dimulai huruf {new_word[-1]}'
+      self.hint_queue.dequeue()
+      hint = generate_hint(self.current_word, self.word_graph, self.used_word)
       self.hint_queue.enqueue(hint)
 
    def end_game(self):
-      print('\n======== GAME SELESAI ========')
+      print('\n========== GAME SELESAI ===========')
 
       # Tampilkan score
       current = self.player_turn.head
@@ -283,7 +282,9 @@ class GameSession:
 
    def start_game(self):
       '''Memulai permainan'''
-      print('======= GAME DIMULAI! =======\n')
+      print('===================================')
+      print('            GAME DIMULAI!')
+      print('===================================\n')
 
       # Pindahkan setup player ke sini
       self.setup_player()
@@ -294,12 +295,13 @@ class GameSession:
       self.setup_game() #Meyiapkan kata pertama secara acak
 
       while self.game_status == True:
+         print()
          self.next_turn()
 
       self.end_game()
 
 class WordDictionary:
-   '''Digunakan untuk menapilkan dictionary dane mencari kata di main menu (main.py)'''
+   '''Digunakan untuk menampilkan dictionary dan mencari kata di main menu (main.py)'''
    def __init__(self):
       self.word_tree = WordTree() 
       self.word_list = []
@@ -320,9 +322,9 @@ class WordDictionary:
 
    def display_dictionary(self):
       '''Menampilkan seluruh kosakata yang dikelompokkan berdasarkan huruf abjad'''
-      print('\n=====================================')
-      print('       DICTIONARY GAME (A-Z)')
-      print('=====================================')
+      print('=' *180)
+      print(f'{'DICTIONARY GAME (A-Z)' :>95} ')
+      print('=' *180)
 
       # Menggunakan fungsi display() dari WordTree
       self.word_tree.display()

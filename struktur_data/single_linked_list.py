@@ -4,8 +4,7 @@ class NodeSingle:
       self.next = None
 
 class SingleLinkedList:
-   '''Digunakan untuk menyimpan rantai utama kata yang berhasil dijawab
-   selama permainan berlangsung secara berurutan.'''
+   '''Digunakan untuk menyimpan scrore pemain.'''
    def __init__(self):
       self.head = None
 

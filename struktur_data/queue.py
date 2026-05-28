@@ -1,6 +1,5 @@
 class Queue:
-   '''Digunakan untuk antrean pemain di ruang tunggu sebelum mulai
-'''
+   '''Digunakan untuk antrean hint kata'''
    def __init__(self):
       self.queue = [] #Menginisialisasi list bernama queuqe
 

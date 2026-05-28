@@ -1,6 +1,6 @@
 from models import GameSession, WordDictionary
 from leaderboard import Leaderboard
-from utils import clear_screen, enter_and_clear
+from utils import clear_screen, tekan_enter, enter_and_clear
 
 def peraturan():
    """Menu Peraturan Cara Bermain"""
@@ -62,12 +62,14 @@ def tampilkan_dictionary():
    '''Menampilkan semua kata dan mencari kata'''
    dictionary = WordDictionary()
    dictionary.display_dictionary()
-   print('\n---------------------------------------------------------------------------------------------------------------------------------')
+   print('-' *180)
    search = input('Masukkan kata yang ingin anda cari (jika ada): ')
    search = dictionary.search_words(search)
-
-   if search == 1: print ('Ditemukan.')
-   else: print('Tidak ditemukan.')
+   
+   if search: 
+      print ('Ditemukan.')
+   else: 
+      print('Tidak ditemukan.')
    enter_and_clear()
 
 def menu_utama():
@@ -103,6 +105,7 @@ def menu_utama():
          case "2": # mulai game
             clear_screen()
             mulai_game()
+            enter_and_clear()
 
          case "3": # menampilkan menu leaderboard
             clear_screen()

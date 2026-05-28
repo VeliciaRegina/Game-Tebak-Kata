@@ -17,6 +17,9 @@ def build_graph(graph, words):
             if word1[-1] == word2[0]:
                graph.add_edge(word1, word2)
 
-def generate_hint(current_word, word_graph):
+def generate_hint(current_word, word_graph, used_word_hash):
+   '''Menghasilkan maksimal 3 hint kata tetangga yang belum pernah digunakan'''
    neighbours = word_graph.get_neighbors(current_word)
-   return neighbours[:3]
+
+   available_hints = [word for word in neighbours if not used_word_hash.get(word)]
+   return available_hints[:3]

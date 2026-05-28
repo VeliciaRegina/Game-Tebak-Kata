@@ -7,7 +7,7 @@ class TreeNode:
       self.words = []
 
 class WordTree:
-   '''Digunakan untuk penyimpanan struktur kata untuk fitur petunjuk'''
+   '''Digunakan untuk penyimpanan struktur kata untuk fitur menampilkan kamus'''
    def __init__(self):
       self.root = TreeNode('ROOT')
 

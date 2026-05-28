@@ -1,6 +1,7 @@
 from algoritma import merge_sort, binary_search
 
 class Leaderboard:
+    '''Digunakan untuk mengatur leaderboard permainan.'''
     def __init__(self, nama_file='leaderboard.txt'):
         self.nama_file = nama_file
         self.data = []
@@ -50,7 +51,7 @@ class Leaderboard:
         print("\n" + "=" * 40)
         print("        L E A D E R B O A R D")
         print("=" * 40)
-        print("No.  Nama            Skor   Tema")
+        print("No.  Nama           Skor   Tema")
         print("-" * 40)
         for i in range(min(batas, len(terurut))):
             nama, skor, tema = terurut[i]
