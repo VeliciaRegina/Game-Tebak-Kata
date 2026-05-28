@@ -330,10 +330,10 @@ class WordDictionary:
       self.word_tree.display()
 
    def search_words(self, word):
-      '''Mencari kata dalam dictionary kata'''
+      '''Mencari kata dalam dictionary kata, mengembalikan True or False'''
       target = word.upper()
       urut = merge_sort(self.word_list)
       hasil = binary_search(urut, target)
 
-      if hasil: return 1
-      else: return 0
+      if hasil: return True
+      else: return False

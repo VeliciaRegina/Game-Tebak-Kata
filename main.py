@@ -63,13 +63,13 @@ def tampilkan_dictionary():
    dictionary = WordDictionary()
    dictionary.display_dictionary()
    print('-' *180)
-   search = input('Masukkan kata yang ingin anda cari (jika ada): ')
-   search = dictionary.search_words(search)
    
-   if search: 
-      print ('Ditemukan.')
-   else: 
-      print('Tidak ditemukan.')
+   kondisi = True 
+   while kondisi: #Mencari kata dalam dictionary 
+      search = input('Masukkan kata yang ingin anda cari (jika ada): ')
+      search = dictionary.search_words(search)
+      if search: print ('Ditemukan.')
+      else: print('Tidak ditemukan.'); kondisi = False
    enter_and_clear()
 
 def menu_utama():
