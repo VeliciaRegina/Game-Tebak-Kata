@@ -72,21 +72,3 @@ class HashTable:
          print(f'Indeks {i}: {bucket}')
 
 
-#import random
-#ht = HashTable()
-#ht.insert("kucing", True)
-#ht.insert("kuda", True)
-#ht.insert("ayam", True)
-#ht.display()
-#ht.insert("cacing", True)
-#ht.display()
-#all_data = ht.get_all_data()
-#print(all_data)
-#print('data random: ', random.choice(all_data))
-#print("Umur andi:", ht.get("andi"))
-#print("Umur budi:", ht.get("budi"))
-#ht.insert("budi", 21)
-#ht.display()
-#ht.delete("budi")
-#ht.display()
-#print("Umur joko:", ht.get("joko"))

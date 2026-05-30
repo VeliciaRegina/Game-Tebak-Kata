@@ -20,8 +20,8 @@ Algoritma game:
    Validasi Kata:
    Benar -> lanjut
    Salah -> kurangi nyawa
-   Simpan ke Linked List, hash, table
+   Simpan ke Linked List, hash table
    Ganti Giliran
 6. Game Over
-7. Sorting Leaderboard
-8. Save File
+7. Save File
+8. Sorting Leaderboard

@@ -23,9 +23,7 @@ def peraturan():
 
 def mulai_game():
    """Memulai permainan"""
-
    sesi = GameSession()
-
    # mulai game
    sesi.start_game()
 
@@ -56,7 +54,7 @@ def menu_leaderboard():
             enter_and_clear()
 
          case "3": clear_screen(); break # kembali
-         case _: print('Pilihan tidak valid.')
+         case _: print('Pilihan tidak valid.'); enter_and_clear()
 
 def tampilkan_dictionary():
    '''Menampilkan semua kata dan mencari kata'''
@@ -117,9 +115,9 @@ def menu_utama():
 
          case '5': # keluar
             print()
-            print('=' *45)
+            print('=' *70)
             print("         TERIMA KASIH TELAH BERMAIN")
-            print('=' *45)
+            print('=' *70)
             jalan = False
 
          case _: # jika tidak meilih 1/2/3

@@ -1,5 +1,5 @@
 def merge_sort(arr):
-   '''Mengurutkan data dari yang terkeci ke terbesar'''
+   '''Mengurutkan data dari yang terkecil ke terbesar.'''
    if len(arr) <= 1:
       return arr
    

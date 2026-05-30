@@ -82,15 +82,3 @@ class DoubleLinkedList:
          current = current.prev
 
 
-#dll = DoubleLinkedList()
-#dll.append('10')
-#dll.append('20')
-#dll.append('30')
-#dll.prepend('5')
-#print("Forward:")
-#dll.display_forward()
-#print("Backward:")
-#dll.display_backward()
-#dll.delete('20')
-#print("Setelah hapus 20:")
-#dll.display_forward()

@@ -1,4 +1,0 @@
-wawa,20,hewan.txt
-wowo,40,hewan.txt
-1,90,hewan.txt
-2,85,hewan.txt

@@ -23,10 +23,3 @@ class Graph:
       '''menampilkan graph'''
       for word in self.graph:
          print(f'{word} -> {self.graph[word]}')
-
-#graph = Graph()
-#graph.add_edge("KUCING", "GAJAH")
-#graph.add_edge("GAJAH", "HARIMAU")
-#graph.add_edge("HARIMAU", "ULAR")
-#graph.get_neighbors("GAJAH")
-#graph.display()

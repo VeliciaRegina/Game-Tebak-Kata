@@ -39,18 +39,3 @@ class WordTree:
          words_list = self.root.children[letter].words
          print(f'[{letter}] : ', ', '.join(words_list))
          print()
-
-#tree = WordTree()
-#tree.insert("ULAR")
-#tree.insert("UDANG")
-#tree.insert("UNTA")
-#tree.insert("HARIMAU")
-#tree.insert("HIU")
-#tree.insert('Ayam')
-#tree.display()
-#h = tree.get_words_by_letter('h')
-#print(f'H: {h}')
-#word_tree = WordTree()
-#for words in animal_words:
-#   word_tree.insert(words)
-#word_tree.display()

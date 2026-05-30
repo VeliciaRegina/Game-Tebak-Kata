@@ -31,17 +31,3 @@ class Queue:
       '''Menampilkan data-data dalam queue'''
       print(self.queue)
 
-#s = Queque()
-#print(s.size())
-#print(s.is_empty())
-#s.enqueue(2)
-#s.enqueue(7)
-#s.enqueue(4)
-#s.enqueue(10)
-#s.display()
-#print(s.peek())
-#print(s.size())
-#print(s.dequeue())
-#s.display()
-#print(s.size())
-#print(s.peek())

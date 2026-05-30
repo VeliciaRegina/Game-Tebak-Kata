@@ -1,4 +1,4 @@
-import random #JANGAN LUPAAAAA
+import random 
 from struktur_data.tree import WordTree
 from struktur_data.hash_table import HashTable
 from struktur_data.graph import Graph 
@@ -20,10 +20,6 @@ class Player:
 
    def is_alive(self):
       return self.lives > 0
-
-   def add_score(self, poin):
-      if self.is_alive():
-         self.score += poin
 
    def reduce_live(self):
       if self.is_alive():
@@ -57,10 +53,10 @@ class GameSession:
 
    def show_lobby(self):
       '''Menampilkan pemain dalam lobby'''
-      print()
-      print('=' *35)
-      print("         PEMAIN MASUK LOBBY")
-      print('=' *35)
+      print('\n\n')
+      print('=' *45)
+      print("             PEMAIN MASUK LOBBY")
+      print('=' *45)
 
       print("+------------------------+")
       print("|  Posisi |  Nama Pemain |")
@@ -79,12 +75,11 @@ class GameSession:
 
             if current == self.player_turn.head:
                break
-
       print("+------------------------+\n")
 
    def setup_player(self):
       '''Menyiapkan data pemain'''
-      print("------------INPUT PEMAIN-----------")
+      print("-----------------INPUT PEMAIN----------------")
 
       for i in range(2):
          name = input(f'Masukkan nama player {i+1}: ')
@@ -116,20 +111,7 @@ class GameSession:
    def load_words(self, filename):
       '''Membaca setiap kata dari file'''
       words = read_words_from_file(filename)
-
-      unique_words = []
-
-      # manual check duplikat
-      for word in words:
-         found = False
-
-         for u in unique_words:
-            if u == word:
-               found = True
-               break
-
-         if not found:
-            unique_words.append(word)
+      unique_words = set(words)
 
       # Masukkan ke struktur data
       for x in unique_words:
@@ -180,30 +162,32 @@ class GameSession:
                for word in hints:
                   print('-', word)
             else: print ('Tidak ada petunjuk yang tersedia!')
-      
-      print('-' *35)
-      answer = input('Masukkan kata: ').upper()
-      valid = self.validate_answer(answer)
+         
+      while True:
+         print('-' *45)
+         answer = input('Masukkan kata: ').upper()
+         valid = self.validate_answer(answer)
 
-      # jika benar
-      if valid == True:
-         print('Jawaban benar!')
-         self.update_word(answer)
-         self.update_score(current_player, 10)
+         # jika benar
+         if valid == True:
+            print('Jawaban benar!')
+            self.update_word(answer)
+            self.update_score(current_player, 10)
+            break
       
-      # Jika kata sudah dipakai ulangi
-      elif valid == 'Used':
-         print('kata sudah dipakai')
-         #current_player.reduce_live()
+         # Jika kata sudah dipakai ulangi
+         elif valid == 'Used':
+            print(f'Kata sudah dipakai! Anda tetap harus\nmemasukkan kata berawalan "{self.current_word[-1]}".')
       
-      #jika salah
-      else:
-         print('Jawaban salah')
-         current_player.reduce_live()
+         #jika salah
+         else:
+            current_player.reduce_live()
+            print(f'Jawaban salah! Nyawa berkurang. Sisa nyawa: {current_player.lives}')
+            break
 
       # Jika nyawa sudah habis
       if current_player.lives <= 0:
-         print('\n============ GAME OVER ============')
+         print('\n\n================= GAME OVER =================')
          print(f'{current_player.name} kehabisan nyawa')
          self.game_status = False
          return
@@ -251,7 +235,7 @@ class GameSession:
       self.hint_queue.enqueue(hint)
 
    def end_game(self):
-      print('\n========== GAME SELESAI ===========')
+      print('\n=============== GAME SELESAI ================')
 
       # Tampilkan score
       current = self.player_turn.head
@@ -264,8 +248,8 @@ class GameSession:
 
          # Simpan ke leaderboard
          self.leaderboard.tambah_skor(
-            player.name,
             player.score,
+            player.name,
             self.current_theme
          )
 
@@ -282,9 +266,9 @@ class GameSession:
 
    def start_game(self):
       '''Memulai permainan'''
-      print('===================================')
-      print('            GAME DIMULAI!')
-      print('===================================\n')
+      print('=============================================')
+      print('                GAME DIMULAI!                ')
+      print('=============================================\n')
 
       # Pindahkan setup player ke sini
       self.setup_player()
@@ -313,9 +297,10 @@ class WordDictionary:
 
       for file in files: #Loop untuk tiga file
          words = read_words_from_file(file)
+         unique_words = set(words)
 
          # manual check duplikat
-         for word in words:
+         for word in unique_words:
             self.word_tree.insert(word)
             if word not in self.word_list:
                self.word_list.append(word)

@@ -1,4 +1,4 @@
-from algoritma import merge_sort, binary_search
+from algoritma import merge_sort
 
 class Leaderboard:
     '''Digunakan untuk mengatur leaderboard permainan.'''
@@ -17,10 +17,10 @@ class Leaderboard:
                     if baris:
                         potongan = baris.split(',')
                         if len(potongan) == 3:
-                            nama, skor_str, tema = potongan
+                            skor_str, nama, tema = potongan
                             try:
                                 skor = int(skor_str)
-                                self.data.append([nama, skor, tema])
+                                self.data.append([skor, nama, tema])
                             except:
                                 pass
         except FileNotFoundError: # File belum ada
@@ -37,9 +37,9 @@ class Leaderboard:
         except:
             print("Terjadi kesalahan saat menyimpan leaderboard. Data skor sementara tidak bisa disimpan.")
 
-    def tambah_skor(self, nama, skor, tema):
+    def tambah_skor(self, skor, nama, tema):
         """Menambahkan skor baru."""
-        self.data.append((nama, skor, tema))
+        self.data.append([skor, nama, tema])
         self._simpan_ke_file()
 
     def tampilkan(self, batas=10):
@@ -47,14 +47,17 @@ class Leaderboard:
         if not self.data:
             print("\nLeaderboard masih kosong.")
             return
-        terurut = merge_sort(self.data)
+        
+        hasil_sort = merge_sort(self.data)
+        terurut = hasil_sort[::-1]
+
         print("\n" + "=" * 40)
         print("        L E A D E R B O A R D")
         print("=" * 40)
         print("No.  Nama           Skor   Tema")
         print("-" * 40)
         for i in range(min(batas, len(terurut))):
-            nama, skor, tema = terurut[i]
+            skor, nama, tema = terurut[i]
             tema_bersih = tema.replace('.txt', '').capitalize()
             print(f"{i+1:<4} {nama:<14} {skor:<6} {tema_bersih}")
         print("=" * 40)

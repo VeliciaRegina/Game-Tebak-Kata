@@ -10,7 +10,7 @@ class CircularLinkedList:
       self.current = None
 
    def get_current(self):
-      '''Menampilkan giliran player'''
+      '''Mengembalikan data player'''
       return self.current.data
 
    def append(self, data):
@@ -53,12 +53,3 @@ class CircularLinkedList:
       
       self.current = self.current.next #pindah ke pemain berikutnya
       return self.current.data #kembalian pemain yang mendapat giliran
-
-
-# c =  CircularLinkedList()
-# c.append('Rea')
-# c.append('Cia')
-# c.display()
-# print(f'Next turn: {c.next_turn()}')
-# print("Giliran:", c.get_current())
-# print(f'Next turn: {c.next_turn()}')
